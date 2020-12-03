@@ -14,12 +14,11 @@ public class Main {
         int sumaConteo=0;
         int numVocales=0;
         File result=null;
-        File archivoResultVocal=null;
         
         //Comprueba si los argumentos que se le pasan por consola son correctos el programa se Ejecutará,
         try {            
-            if(args.length!=3) {
-                System.out.println("Error de sintaxis: java Main <dir fichero> <dir FileProperties> <dir FileManagedment>");            
+            if(args.length!=1) {
+                System.out.println("Error de sintaxis: java Main <dir fichero>");            
             } else {                
                 //Bucle donde se recorre la lista de vocales.                
                 String[] listaVocales= {"a","e","i","o","u"};        
@@ -33,19 +32,22 @@ public class Main {
                     result=new File("Result_"+ficheroInicio);
                     if(!result.exists()) {
                     	result.createNewFile();       
-	                }
-                    
-	                //Se crean y se inician los ProcessBuilder.
-                    File rutaFM=new File(args[0]);
-	                String PruebaPSP=rutaFM.getAbsolutePath();  
-                    
-	                //Se iniciaran los ProcessBuilder. 
-	                ProcessBuilder pb=new ProcessBuilder("java","FilesManagedment",PruebaPSP,vocal,ficheroVocales);
-	                pb.start(); 
+	                 }
+	                    //Se crean y se inician los ProcessBuilder.
+	                    //File rutaFM=new File("src\\"+args[2]);
+	                    //String filesManagAbsoluta=rutaFM.getAbsolutePath();
+	                    //File rutaVocal=new File("ResultVocal_"+vocal.toUpperCase()+".txt");
+	                    //String ArchivoVocalAbsoluta=rutaVocal.getAbsolutePath();
+	                        
+	                    //Se iniciaran los ProcessBuilder. 
+	                    ProcessBuilder pb=new ProcessBuilder("java","FilesManagedment",ficheroInicio,vocal,ficheroVocales);
+	                    pb.redirectError(new File("ErroresVocal_"+vocal.toUpperCase()+".txt"));
+	                    pb.start(); 
 	                    
-	                Thread.sleep(6000);
+                    //} 
+	                    Thread.sleep(6000);
                                 
-                    archivoResultVocal=new File(ficheroVocales);
+                    File archivoResultVocal=new File(ficheroVocales);
                     if(archivoResultVocal.exists()) {
                     	 BufferedReader br=fP.getBufferedReader(archivoResultVocal);        
                   	    numVocales=Integer.parseInt(br.readLine());
@@ -53,13 +55,8 @@ public class Main {
                   	    PrintWriter prWr=fP.getPrintWriter(result);
                   	    prWr.write("\nEl resultado de la vocal_"+vocal.toUpperCase()+" es: "+numVocales);
                   	    System.out.println("\nEl resultado de la vocal_"+vocal.toUpperCase()+" es: "+numVocales);
-                  	    
                   	    br.close();
                   	    prWr.close();
-                  	 	//Se borran los ficheros con los resultados de los conteos de las vocales.
-                 	   	if(archivoResultVocal!=null){
-                 	   		archivoResultVocal.delete();	
-                 	   	}
                     } else {
                     	System.out.println("Error, el archivo no existe!!.");
                     }
@@ -67,10 +64,12 @@ public class Main {
                 PrintWriter prWr2=fP.getPrintWriter(result);
          	    prWr2.write("\nEl resultado Total es: "+sumaConteo);
          	   	System.out.println("\nEl resultado Total es: "+sumaConteo);
-
+         	   		
          	   	//Se cierran los flujos.
        			prWr2.close();
        			
+       			//Se borran los ficheros con los resultados de los conteos de las vocales.
+       			//ficheroVocales.delete();
             }        
         } catch(ArrayIndexOutOfBoundsException f) {
             System.out.println("Error, no se está pasando ningún argumento a la matriz.");

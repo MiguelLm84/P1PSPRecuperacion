@@ -1,0 +1,25 @@
+
+El resultado de la vocal_A es: 4
+El resultado de la vocal_E es: 5
+El resultado de la vocal_I es: 5
+El resultado de la vocal_O es: 7
+El resultado de la vocal_U es: 6
+El resultado Total es: 27
+El resultado de la vocal_A es: 4
+El resultado de la vocal_E es: 5
+El resultado de la vocal_I es: 5
+El resultado de la vocal_O es: 7
+El resultado de la vocal_U es: 6
+El resultado Total es: 27
+El resultado de la vocal_A es: 4
+El resultado de la vocal_E es: 5
+El resultado de la vocal_I es: 5
+El resultado de la vocal_O es: 7
+El resultado de la vocal_U es: 6
+El resultado Total es: 27
+El resultado de la vocal_A es: 4
+El resultado de la vocal_E es: 5
+El resultado de la vocal_I es: 5
+El resultado de la vocal_O es: 7
+El resultado de la vocal_U es: 6
+El resultado Total es: 27
